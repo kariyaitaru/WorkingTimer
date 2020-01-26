@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/*_elements.scss*/
+
+.form-group label {
+  font-size: .8rem;
+}
+
+.chkCard {
+  display: none;
+}
+
+.card {
+  background: rgb(214, 233, 255);
+  box-shadow: 0 -0.2rem rgba(0, 0, 0, 0.2) inset;
+  width: 15rem;
+
+  .chkCard:checked + & {
+    background: #FF9;
+    // border-bottom: solid 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0;
+
+    transform: translateY(0.2rem);/*下に動く*/
+  }
+}
