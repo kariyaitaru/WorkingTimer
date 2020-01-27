@@ -57,31 +57,45 @@ function addEvents() {
   });
 
   $('#btnResult').on('click', function () {
-    $('#conTable').empty()
-    const now = Date.now();
-    let elTable = $('<table>');
-    let tr = $('<tr>')
-    $(elTable).addClass('table table-striped');
-    $(tr).append('<th>ID</th>');
-    $(tr).append('<th>日付</th>');
-    $(tr).append('<th>作業時間(分)</th>');
-    $(elTable).append(tr);
-
-    let table = getData(T_TIMER);
-    table.forEach(data => {
-      let workMin = data['work_minute'];
-      if (data['start_dt'] != '') {
-        workMin = data['work_minute'] + Math.floor((now - data['start_dt']) / 60000);
-      }
-      let td = $('<tr>')
-      $(td).append('<td>' + data['id'] + '</td>');
-      $(td).append('<td>' + data['date'] + '</td>');
-      $(td).append('<td>' + workMin + '</td>');
-      $(elTable).append(td);
-    });
-
-    $('#conTable').append(elTable);
+    showResult();
   });
+}
+
+function showResult() {
+  $('#conTable').empty()
+  const now = Date.now();
+  let elTable = $('<table>');
+  let tr = $('<tr>')
+  $(elTable).addClass('table table-striped');
+  $(tr).append('<th>ID</th>');
+  $(tr).append('<th>日付</th>');
+  $(tr).append('<th>作業時間</th>');
+  $(elTable).append(tr);
+
+  let table = getData(T_TIMER);
+  table.forEach(data => {
+    let workMin = data['work_minute'];
+    let workHour = 0;
+    let strWorkTimer = '';
+    if (data['start_dt'] != '') {
+      workMin = data['work_minute'] + Math.floor((now - data['start_dt']) / 60000);
+    }
+    workHour = Math.floor(workMin / 60);
+    workMin = workMin - workHour * 60;
+    if (workHour > 0) {
+      strWorkTimer += workHour + '時間';
+    }
+    strWorkTimer += workMin + '分';
+
+    let td = $('<tr>')
+    $(td).append('<td>' + data['id'] + '</td>');
+    $(td).append('<td>' + data['date'] + '</td>');
+    $(td).append('<td>' + strWorkTimer + '</td>');
+    $(elTable).append(td);
+  });
+
+  $('#conTable').append(elTable);
+
 }
 
 function timerStart(id){
