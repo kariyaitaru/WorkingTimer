@@ -58,6 +58,7 @@ function addEvents() {
 
   $('#btnResult').on('click', function () {
     $('#conTable').empty()
+    const now = Date.now();
     let elTable = $('<table>');
     let tr = $('<tr>')
     $(elTable).addClass('table table-striped');
@@ -68,10 +69,14 @@ function addEvents() {
 
     let table = getData(T_TIMER);
     table.forEach(data => {
+      let workMin = data['work_minute'];
+      if (data['start_dt'] != '') {
+        workMin = data['work_minute'] + Math.floor((now - data['start_dt']) / 60000);
+      }
       let td = $('<tr>')
       $(td).append('<td>' + data['id'] + '</td>');
       $(td).append('<td>' + data['date'] + '</td>');
-      $(td).append('<td>' + data['work_minute'] + '</td>');
+      $(td).append('<td>' + workMin + '</td>');
       $(elTable).append(td);
     });
 
