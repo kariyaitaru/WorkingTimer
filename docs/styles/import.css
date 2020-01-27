@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*_elements.scss*/
 @media screen and (max-device-width: 480px) {
   html,
@@ -17,16 +16,17 @@
 
 .card {
   background: #d6e9ff;
-  -webkit-box-shadow: 0 -0.2rem rgba(0, 0, 0, 0.2) inset;
-          box-shadow: 0 -0.2rem rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset;
+          box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset;
+  height: 6rem;
   width: 100%;
 }
 
 .chkCard:checked + .card {
   background: #FF9;
-  -webkit-box-shadow: 0 0 0;
-          box-shadow: 0 0 0;
-  -webkit-transform: translateY(0.2rem);
-          transform: translateY(0.2rem);
-  /*下に動く*/
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  height: 5.7rem;
+  -webkit-transform: translateY(0.3rem);
+          transform: translateY(0.3rem);
 }

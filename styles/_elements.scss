@@ -16,16 +16,18 @@
   display: none;
 }
 
+$btn3dHeight:0.3rem;
+$cardHeight:6rem;
 .card {
   background: rgb(214, 233, 255);
-  box-shadow: 0 -0.2rem rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 -1 * $btn3dHeight rgba(0, 0, 0, 0.2) inset;
+  height: $cardHeight;
   width: 100%;
 
   .chkCard:checked + & {
     background: #FF9;
-    // border-bottom: solid 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 0;
-
-    transform: translateY(0.2rem);/*下に動く*/
+    box-shadow: none;
+    height: $cardHeight - $btn3dHeight;
+    transform: translateY($btn3dHeight);//下に動く
   }
 }
