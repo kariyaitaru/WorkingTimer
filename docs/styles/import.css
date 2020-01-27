@@ -16,8 +16,8 @@
 
 .card {
   background: #d6e9ff;
-  -webkit-box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset;
-          box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset, 0.15rem 0.15rem 0.15rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset, 0.15rem 0.15rem 0.15rem rgba(0, 0, 0, 0.2);
   height: 6rem;
   -webkit-transition: 0.1s ease-in-out;
   transition: 0.1s ease-in-out;

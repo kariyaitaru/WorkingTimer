@@ -20,7 +20,8 @@ $btn3dHeight:0.3rem;
 $cardHeight:6rem;
 .card {
   background: rgb(214, 233, 255);
-  box-shadow: 0 -1 * $btn3dHeight rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 -1 * $btn3dHeight rgba(0, 0, 0, 0.2) inset,
+    $btn3dHeight/2 $btn3dHeight/2 $btn3dHeight/2 rgba(0, 0, 0, 0.2);
   height: $cardHeight;
   transition: 0.1s ease-in-out;
   width: 100%;
