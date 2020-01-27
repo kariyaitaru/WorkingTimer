@@ -9,6 +9,7 @@ $(function () {
 
   loadCards();
   loadTimer();
+  showResult();
 });
 
 /**
@@ -69,6 +70,8 @@ function addEvents() {
       });
     }
   });
+
+  setInterval("showResult()", 60 * 1000);
 }
 
 function showResult() {
