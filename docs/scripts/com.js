@@ -74,7 +74,7 @@ function addEvents() {
     if (confirm('すべてのカードと作業記録をクリアします。よろしいですか？')) {
       clearStorage(M_CARD);
       clearStorage(T_TIMER);
-      showResult();
+      location.reload();
     }
   });
 
