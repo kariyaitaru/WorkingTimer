@@ -1,6 +1,13 @@
 @charset "UTF-8";
 /*_elements.scss*/
 
+@media screen and (max-device-width: 480px) {
+  html,
+  body {
+    font-size: 13px;
+  }
+}
+
 .form-group label {
   font-size: .8rem;
 }
@@ -12,7 +19,7 @@
 .card {
   background: rgb(214, 233, 255);
   box-shadow: 0 -0.2rem rgba(0, 0, 0, 0.2) inset;
-  width: 15rem;
+  width: 100%;
 
   .chkCard:checked + & {
     background: #FF9;
