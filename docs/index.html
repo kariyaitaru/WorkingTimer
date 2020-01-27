@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Language" content="ja">
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="cache-control" content="no-cache" />
+  <title>WorkingTimer</title>
+  <link rel="stylesheet" href="./lib/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/import.css?ver=001">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">作業時間を記録するアプリ</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container form-group">
+    <div class="row">
+      <div class="col">
+        <label for="txtProjectNm">プロジェクト</label>
+        <input type="text" class="form-control" id="txtProjectNm">
+      </div>
+      <div class="col">
+        <label for="txtWorkNm">作業</label>
+        <input type="text" class="form-control" id="txtWorkNm">
+      </div>
+      <div class="col mt-4">
+          <button class="btn btn-primary" id="btnAddCard">追加する</button>
+          <button class="btn btn-secondary" id="btnClear">結果をクリアする</button>
+      </div>
+    </div>
+  </div>
+  <div class="container container-fluid">
+    <div class="row" id="divCardContainer">
+      <div class="col" id="card_" style="display: none;" data-card_id="">
+        <input type="checkbox" class="chkCard" id="chkCard_">
+        <label class="card" for="chkCard_">
+          <div class="card-body">
+            <h5 class="card-title">プロジェクト名</h5>
+            <h6 class="card-subtitle mb-2 text-muted">案件名</h6>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="conTable">
+  </div>
+  <script src="./lib/jquery-3.4.1.slim.min.js"></script>
+  <script src="./lib/popper.min.js"></script>
+  <script src="./lib/bootstrap.min.js"></script>
+  <script src="./scripts/com.js?ver=0ee1"></script>
+</body>
+</html>
