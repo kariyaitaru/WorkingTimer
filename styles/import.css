@@ -19,6 +19,8 @@
   -webkit-box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset;
           box-shadow: 0 -0.3rem rgba(0, 0, 0, 0.2) inset;
   height: 6rem;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
   width: 100%;
 }
 

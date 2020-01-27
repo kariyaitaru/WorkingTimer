@@ -22,6 +22,7 @@ $cardHeight:6rem;
   background: rgb(214, 233, 255);
   box-shadow: 0 -1 * $btn3dHeight rgba(0, 0, 0, 0.2) inset;
   height: $cardHeight;
+  transition: 0.1s ease-in-out;
   width: 100%;
 
   .chkCard:checked + & {
