@@ -41,23 +41,33 @@ function addEvents() {
   $('#chkCard_').on('change', function() {
     const checked = $(this).prop('checked');
     const id = $(this).attr('id');
+    const cardId = id.replace('chkCard_','');
     if (checked) {
-      timerStart(id);
+      timerStart(cardId);
       $('input[id^="chkCard_"]').each(function(index, elm) {
         if ($(elm).attr('id') != id){
           if ($(elm).prop('checked') == true) {
-            timerEnd($(elm).attr('id'));
+            timerEnd($(elm).attr('id').replace('chkCard_',''));
             $(elm).prop('checked', false);
           }
         }
       });
     } else {
-      timerEnd(id);
+      timerEnd(cardId);
     }
   });
 
   $('#btnResult').on('click', function () {
     showResult();
+  });
+  $('#btnClear').on('click', function () {
+    if (confirm('結果をクリアします。よろしいですか？')) {
+      clearStorage(T_TIMER);
+      showResult();
+      $('input[id^="chkCard_"]').each(function(index, elm) {
+        $(elm).prop('checked', false);
+      });
+    }
   });
 }
 
@@ -67,16 +77,20 @@ function showResult() {
   let elTable = $('<table>');
   let tr = $('<tr>')
   $(elTable).addClass('table table-striped');
-  $(tr).append('<th>ID</th>');
+  $(tr).append('<th>プロジェクト</th>');
+  $(tr).append('<th>作業</th>');
   $(tr).append('<th>日付</th>');
   $(tr).append('<th>作業時間</th>');
   $(elTable).append(tr);
+  let cards = getData(M_CARD);
 
   let table = getData(T_TIMER);
   table.forEach(data => {
     let workMin = data['work_minute'];
     let workHour = 0;
     let strWorkTimer = '';
+    let projNm = '';
+    let workNm = '';
     if (data['start_dt'] != '') {
       workMin = data['work_minute'] + Math.floor((now - data['start_dt']) / 60000);
     }
@@ -87,11 +101,20 @@ function showResult() {
     }
     strWorkTimer += workMin + '分';
 
-    let td = $('<tr>')
-    $(td).append('<td>' + data['id'] + '</td>');
-    $(td).append('<td>' + data['date'] + '</td>');
-    $(td).append('<td>' + strWorkTimer + '</td>');
-    $(elTable).append(td);
+    tr = $('<tr>')
+
+    cards.forEach(card => {
+      if (card['id'] == data['id']) {
+        projNm = card['projNm'];
+        workNm = card['workNm'];
+      }
+    });
+
+    $(tr).append('<td>' + projNm + '</td>');
+    $(tr).append('<td>' + workNm + '</td>');
+    $(tr).append('<td>' + data['date'] + '</td>');
+    $(tr).append('<td>' + strWorkTimer + '</td>');
+    $(elTable).append(tr);
   });
 
   $('#conTable').append(elTable);
@@ -169,6 +192,9 @@ function addCard(data) {
   $(card).appendTo('#divCardContainer');
 }
 
+function clearStorage(key) {
+  localStorage.removeItem(key);
+}
 
 /**
  * ローカルストレージからテーブルを取得する
@@ -221,7 +247,7 @@ function loadTimer() {
 
   table.forEach(data => {
     if (data['start_dt'] != '') {
-      $('#' + data['id']).prop('checked', true);
+      $('#chkCard_' + data['id']).prop('checked', true);
     }
   });
 }
