@@ -70,6 +70,13 @@ function addEvents() {
       });
     }
   });
+  $('#btnDelCards').on('click', function () {
+    if (confirm('すべてのカードと作業記録をクリアします。よろしいですか？')) {
+      clearStorage(M_CARD);
+      clearStorage(T_TIMER);
+      showResult();
+    }
+  });
 
   setInterval("showResult()", 60 * 1000);
 }
