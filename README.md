@@ -5,7 +5,7 @@
 業務やプライベートなどで、どの作業にどの程度の時間を要したか、その実績を日毎に記録するアプリです。
 
 ## 利用イメージ
-
+![demo](https://raw.githubusercontent.com/wiki/kariyaitaru/WorkingTimer/images/sagyojikanwokiroku.gif)
 
 ## 使い方
 - プロジェクト、作業のそれぞれにわかりやすい名前を入力する。<br>
