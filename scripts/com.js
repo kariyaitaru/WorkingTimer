@@ -165,7 +165,7 @@ function timerEnd(id){
 
   let table = getData(T_TIMER);
   table.forEach(data => {
-    if (data['id'] == id && data['date'] == today) {
+    if (data['id'] == id && data['date'] <= today && data['start_dt'] != '') {
       const startDt = data['start_dt'];
       let workMin = data['work_minute'] + Math.floor((now - startDt) / 60000);
       data['start_dt'] = '';
