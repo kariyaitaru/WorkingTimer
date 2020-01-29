@@ -5,12 +5,25 @@ const T_TIMER = 'timer_t';
  * 全画面共通読み込み時処理
  */
 $(function () {
+
+  loadSW();
+
   addEvents();
 
   loadCards();
   loadTimer();
   showResult();
 });
+
+function loadSW() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(registration => {
+      console.log('ServiceWorker registration successful.');
+    }).catch(err => {
+      console.log('ServiceWorker registration failed.');
+    });
+  }
+}
 
 /**
  * イベント定義
