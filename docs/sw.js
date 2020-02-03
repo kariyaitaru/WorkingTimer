@@ -1,5 +1,5 @@
 // Cache name
-const CACHE_NAME = 'version1.0.1';
+const CACHE_NAME = 'version1.0.2';
 // Cache targets
 const urlsToCache = [
   './',
