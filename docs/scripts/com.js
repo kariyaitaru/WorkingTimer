@@ -146,7 +146,10 @@ function showResult() {
 
 function timerStart(id){
   const objDate = new Date();
-  const today = objDate.getFullYear() + "/" + (objDate.getMonth() * 1 + 1) + "/"+ objDate.getDate();
+  const year = objDate.getFullYear();
+  const month = objDate.getMonth() + 1;
+  const date = objDate.getDate();
+  const today = year + '/' + ('00' + month).slice(-2) + '/' + ('00' + date).slice(-2);
   const now = Date.now();
 
   let table = getData(T_TIMER);
@@ -173,7 +176,10 @@ function timerStart(id){
 
 function timerEnd(id){
   const objDate = new Date();
-  const today = objDate.getFullYear() + "/" + (objDate.getMonth() * 1 + 1) + "/"+ objDate.getDate();
+  const year = objDate.getFullYear();
+  const month = objDate.getMonth() + 1;
+  const date = objDate.getDate();
+  const today = year + '/' + ('00' + month).slice(-2) + '/' + ('00' + date).slice(-2);
   const now = Date.now();
 
   let table = getData(T_TIMER);
